@@ -4,27 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
-    <h1>Calculo del numero menor y mayor</h1>
-    <form th:action="@{/procesar}" method="get">
-        <p>
-            numero 1:
-            <input type="text" name="numero1"/>
-        </p>
-        <p>
-            numero 2:
-            <input type="text" name="numero2"/>
-        </p>
-        <p>
-            numero 3:
-            <input type="text" name="numero3"/>
-        </p>
+    <div class="card text-center">
+        <div class="card-header">
+          <h1><i class="fa-solid fa-calculator"></i> Cálculo del número menor y mayor <i class="fa-solid fa-calculator"></i></h1>  
+        </div>
+        <div class="card-body">
+            <form th:action="@{/procesar}" method="get">
+   
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Numero 1:</span>
+                    <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="numero1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Numero 2:</span>
+                    <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="numero2">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Numero 3:</span>
+                    <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="numero3">
+                </div>
 
-        <button type="submit">calcular menor y mayor</button>
+                <div th:if="${error}" class="alert alert-danger" role="alert">
+                    <span th:text="${error}"></span>
+                </div>
+        
+                <button type="submit" class="btn btn-primary"> <i class="fa-brands fa-resolving"></i> calcular menor y mayor</button>
+        
+            </form>
+        </div>
+    </div>
 
-    </form>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

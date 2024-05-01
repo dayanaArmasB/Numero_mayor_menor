@@ -16,10 +16,17 @@ public class InicioController {
 
     @RequestMapping("/procesar")
     public String logica(
-        @RequestParam int numero1,
-        @RequestParam int numero2,
-        @RequestParam int numero3, Model model) {
+        @RequestParam(required = false) Integer numero1,
+        @RequestParam(required = false) Integer numero2,
+        @RequestParam(required = false) Integer numero3, Model model) {
             
+            if (numero1 == null || numero2 == null || numero3 == null) {
+                model.addAttribute("error", "Por favor ingrese todos los números.");
+                return "inicio";
+            }
+
+            
+
             int mayor = numero1; // Asumimos que a es el mayor por defecto
             if (numero2 > mayor) {
                 mayor = numero2;
@@ -37,15 +44,15 @@ public class InicioController {
                 menor = numero3;
             }
 
-            String respuesta1 = "";
-            String respuesta2 = "";
+            //String respuesta1 = "";
+            //String respuesta2 = "";
                 
-            respuesta1 = "el numeero mayor es " +mayor;
+            //respuesta1 = mayor;
         
-            respuesta2 = "el numero menor es " +menor;
+            //respuesta2 = "el numero menor es " +menor;
 
-            model.addAttribute("respuesta1", respuesta1);
-            model.addAttribute("respuesta2", respuesta2);
+            model.addAttribute("mayor", mayor);
+            model.addAttribute("menor", menor);
 
         return "resultado";
     }
